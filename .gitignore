@@ -1,0 +1,27 @@
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# 模型与大文件（首次运行会自行下载）
+*.onnx
+
+# 本地素材与中间产物（体积大，不入库）
+raw_photos/
+pool_*.json
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# 临时
+tmp/
+*.tmp
