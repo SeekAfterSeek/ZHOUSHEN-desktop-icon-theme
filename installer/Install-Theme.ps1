@@ -23,8 +23,8 @@
 #>
 [CmdletBinding()]
 param(
-    [ValidateSet('v11', 'planB', 'planC')]
-    [string]$Theme = 'v11',
+    [ValidateSet('v12', 'v11', 'planB', 'planC')]
+    [string]$Theme = 'v12',
 
     [ValidateSet('apply', 'rollback', 'uninstall', 'list', 'preview')]
     [string]$Action = 'apply'
@@ -42,7 +42,10 @@ $StateFile = Join-Path $StateDir 'original-shortcuts.json'
 # 在桌面渲染为空白图标（本项目实测，见 docs/PITFALLS.md 第 2 条）
 $IconCache = Join-Path $env:LOCALAPPDATA 'ZsIconTheme\icons'
 
-$ThemeNames = @{ v11 = '第十一版（三标准加权·终版）'; planB = 'Plan B（全新照片·方形为主）'; planC = 'Plan C（全新照片·圆形为主）' }
+$ThemeNames = @{ v12 = '第十二版（混搭 Plan B/C · 全部方形）'
+                 v11 = '第十一版（三标准加权·终版）'
+                 planB = 'Plan B（全新照片·方形为主）'
+                 planC = 'Plan C（全新照片·圆形为主）' }
 
 # ---------------------------------------------------------------- 应用清单
 # key    : themes\<theme>\icons\<key>.png 的文件名

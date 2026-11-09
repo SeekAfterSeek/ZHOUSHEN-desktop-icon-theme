@@ -13,7 +13,7 @@
   <a href="https://github.com/SeekAfterSeek/zs-desktop-icon-theme/stargazers">
     <img src="https://img.shields.io/github/stars/SeekAfterSeek/zs-desktop-icon-theme?style=flat-square" alt="stars"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6?style=flat-square" alt="platform">
-  <img src="https://img.shields.io/badge/version-v11.0-3EB575?style=flat-square" alt="version">
+  <img src="https://img.shields.io/badge/version-v12.0-3EB575?style=flat-square" alt="version">
   <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="license">
 </p>
 
@@ -92,17 +92,40 @@ powershell -ExecutionPolicy Bypass -File installer\Install-Theme.ps1 -Theme plan
 
 ---
 
-## 三套方案
+## 三套方案 + 完整迭代档案
 
 | 方案 | 形状 | 照片 | 说明 |
 |---|---|---|---|
-| **v11**（终版） | 圆角方形 / 圆形 | 精选 | 三标准加权评分后的最终版 |
+| **v12**（当前默认） | 圆角方形为主 | 混搭 B/C + 手工精选 | 联想/腾讯会议等重选表情更生动的照片 |
+| **v11** | 圆角方形 / 圆形 | 精选 | 三标准加权评分后的版本 |
 | **Plan B** | 以圆角方形为主 | **全部首次使用** | 与 v11 零重叠的替代方案 |
 | **Plan C** | 以圆形为主 | **全部首次使用** | 与 v11、Plan B 都零重叠 |
 
 <p align="center">
   <img src="assets/compare_3plans.png" width="1000" alt="三套方案对比">
 </p>
+
+### 全部 11 个历史版本都保留在仓库里
+
+从最开始的深蓝扁平 glyph，到最后的混搭版，每一版的 24 张成品图和生成脚本都在：
+
+```
+themes/versions/
+├── v1/   深蓝扁平 glyph（无照片）
+├── v2/   舞台照 + 原图标轮廓
+├── v3/   写真满铺 + 右下角角标   ← 结构定型
+├── v4/   每个 APP 配配色匹配的照片
+├── v5/   异形图标 + 提亮
+├── v7/   按背景色自动匹配
+├── v8/   改为按衣服色匹配        ← 配色逻辑转向
+├── v9/   图标色 × 衣服色双约束
+├── v10/  衣服色为准 + 小脸裁剪放大
+├── v11/  三标准加权 + 调色 + 唯一性  ← 方法定型
+└── v12/  混搭 Plan B/C + 全部方形    ← 当前版本
+```
+
+每一版都有独立的提交记录和说明文档 `docs/versions/vN.md`，
+可以用 `git log --oneline` 看完整脉络。
 
 ---
 
