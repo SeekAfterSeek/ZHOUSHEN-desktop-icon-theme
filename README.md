@@ -7,6 +7,14 @@
   <img src="assets/hero_v11.png" width="900" alt="第十一版效果">
 </p>
 
+<p align="center">
+  <a href="https://github.com/SeekAfterSeek/zs-desktop-icon-theme/stargazers">
+    <img src="https://img.shields.io/github/stars/SeekAfterSeek/zs-desktop-icon-theme?style=flat-square" alt="stars"></a>
+  <img src="https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6?style=flat-square" alt="platform">
+  <img src="https://img.shields.io/badge/version-v11.0-3EB575?style=flat-square" alt="version">
+  <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="license">
+</p>
+
 ---
 
 ## 这是什么
@@ -20,12 +28,17 @@
 
 每个图标右下角保留**原应用的小角标**，所以换成照片后你依然一眼认得出哪个是微信、哪个是 Steam。
 
+> **想直接看技术亮点？** → [HIGHLIGHTS.md](HIGHLIGHTS.md)
+
 ---
 
 ## 一分钟上手
 
 ```powershell
-# 1. 下载并解压，进入目录
+# 1. 克隆（或点右上角 Code → Download ZIP）
+git clone https://github.com/SeekAfterSeek/zs-desktop-icon-theme.git
+cd zs-desktop-icon-theme
+
 # 2. 先看看会改哪些（不修改任何东西）
 powershell -ExecutionPolicy Bypass -File installer\Install-Theme.ps1 -Action list
 
