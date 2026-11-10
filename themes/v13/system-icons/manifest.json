@@ -1,31 +1,52 @@
 {
- "pc": {
-  "shape": "monitor",
-  "source": "studio_20261026_32066_6.jpg",
-  "note": "用户认可：人脸偏一点、像趴在电脑上"
- },
+ "说明": "人脸位置改为补边自由裁切，实测误差≤3%",
  "bin": {
   "shape": "trashcan",
   "source": "station_20261106_78013_1.jpg",
-  "face_center": "47%,50%",
-  "note": "人物右移到中间"
+  "face": [
+   50,
+   59
+  ],
+  "measured": [
+   49.5,
+   57.5
+  ],
+  "face_frac": 0.36
  },
  "panel": {
   "shape": "gear",
   "source": "station_20260627_39389_0.jpg",
-  "face_center": "50%,50%",
-  "face_frac": 0.33,
-  "note": "人物下移居中并放大面部，齿轮圆盘加大"
+  "face": [
+   50,
+   50
+  ],
+  "measured": [
+   51.0,
+   46.9
+  ],
+  "face_frac": 0.36
  },
  "user": {
   "shape": "bust",
   "source": "station_20260524_50364_3.jpg",
-  "face_frac": 0.38,
-  "note": "换成半身人（胸像）轮廓，换图"
+  "face": [
+   50,
+   32
+  ],
+  "measured": [
+   51.3,
+   31.3
+  ],
+  "face_frac": 0.38
+ },
+ "pc": {
+  "shape": "monitor",
+  "source": "studio_20261026_32066_6.jpg",
+  "note": "用户认可"
  },
  "folder": {
   "shape": "folder",
   "source": "studio_20260803_72973_2.jpg",
-  "note": "用户确认刚好"
+  "note": "用户确认"
  }
 }
