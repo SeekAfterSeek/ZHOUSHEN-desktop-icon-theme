@@ -45,14 +45,18 @@
  {
   "app": "ToDesk",
   "file": "station_20260927_91932_0.jpg",
-  "corr": 0.9674,
-  "shape": "squircle"
+  "corr": 0.996,
+  "shape": "squircle",
+  "note": "N7 宽构图（露白色褶边领），新建快捷方式",
+  "from": "shot_locate"
  },
  {
   "app": "QQ音乐",
-  "file": "picks__station_20260510_59173_0.jpg",
-  "corr": 0.877,
-  "shape": "circle"
+  "file": "station_20260802_35819_1.jpg",
+  "corr": 1.0,
+  "shape": "circle",
+  "note": "N2 黄衬衫街景，圆形+金边",
+  "from": "shot_locate"
  },
  {
   "app": "腾讯QQ",
