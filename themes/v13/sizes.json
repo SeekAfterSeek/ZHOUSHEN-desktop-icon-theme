@@ -1,0 +1,37 @@
+{
+ "腾讯QQ": {
+  "circle_or_width": 0.984,
+  "bbox": [
+   0.992,
+   1.0
+  ]
+ },
+ "QQ音乐": {
+  "circle_or_width": 0.969,
+  "bbox": [
+   0.969,
+   0.969
+  ]
+ },
+ "Clash Verge": {
+  "circle_or_width": 0.969,
+  "bbox": [
+   0.969,
+   0.969
+  ]
+ },
+ "哔哩哔哩": {
+  "circle_or_width": 0.969,
+  "bbox": [
+   0.969,
+   0.969
+  ]
+ },
+ "ToDesk": {
+  "circle_or_width": 0.969,
+  "bbox": [
+   0.969,
+   0.969
+  ]
+ }
+}

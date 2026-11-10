@@ -59,6 +59,7 @@
   "file": "photos_2026__station_20261017_31971_5.jpg",
   "corr": 0.819,
   "shape": "circle+ear-tips+soft-glow",
-  "note": "P9 狐狸耳：圆宽0.93 + 耳尖探出 + 白色柔光外发光(alpha120/blur0.030/内侧高光alpha70)，脸高40%"
+  "note": "P9 狐狸耳：圆宽 0.984（QQ音乐/Clash 为 0.969），耳尖探出画布顶边，白色柔光，脸高40%",
+  "circle_width": 0.984
  }
 ]
