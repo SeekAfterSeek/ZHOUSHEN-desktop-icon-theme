@@ -1,28 +1,31 @@
 {
- "说明": "脸的位置与大小按外形可用区手定；此电脑保留用户认可的一版",
  "pc": {
-  "tf": 0.56,
-  "fcx": 0.5,
-  "fcy": 0.48
+  "shape": "monitor",
+  "source": "studio_20261026_32066_6.jpg",
+  "note": "用户认可：人脸偏一点、像趴在电脑上"
  },
  "bin": {
-  "tf": 0.3,
-  "fcx": 0.5,
-  "fcy": 0.6
+  "shape": "trashcan",
+  "source": "station_20261106_78013_1.jpg",
+  "face_center": "47%,50%",
+  "note": "人物右移到中间"
  },
  "panel": {
-  "tf": 0.28,
-  "fcx": 0.5,
-  "fcy": 0.5
+  "shape": "gear",
+  "source": "station_20260627_39389_0.jpg",
+  "face_center": "50%,50%",
+  "face_frac": 0.33,
+  "note": "人物下移居中并放大面部，齿轮圆盘加大"
  },
  "user": {
-  "tf": 0.46,
-  "fcx": 0.5,
-  "fcy": 0.45,
-  "source": "studio_20260903_94616_0.jpg"
+  "shape": "bust",
+  "source": "station_20260524_50364_3.jpg",
+  "face_frac": 0.38,
+  "note": "换成半身人（胸像）轮廓，换图"
  },
  "folder": {
   "shape": "folder",
-  "source": "studio_20260803_72973_2.jpg"
+  "source": "studio_20260803_72973_2.jpg",
+  "note": "用户确认刚好"
  }
 }
