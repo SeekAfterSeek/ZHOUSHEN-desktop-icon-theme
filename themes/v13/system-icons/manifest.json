@@ -1,29 +1,28 @@
 {
- "note": "v3：头部完整度用原始人脸坐标判定（上0.86/侧0.74/下0.58），面部完整、头发允许少量裁剪",
+ "说明": "脸的位置与大小按外形可用区手定；此电脑保留用户认可的一版",
  "pc": {
-  "shape": "monitor",
-  "source": "studio_20261026_32066_6.jpg",
-  "face_frac": 0.42,
-  "head_cover": 0.995
+  "tf": 0.56,
+  "fcx": 0.5,
+  "fcy": 0.48
  },
  "bin": {
-  "shape": "trashcan",
-  "source": "station_20261106_78013_1.jpg",
-  "face_frac": 0.46,
-  "head_cover": 0.998
+  "tf": 0.3,
+  "fcx": 0.5,
+  "fcy": 0.6
  },
  "panel": {
-  "shape": "gear",
-  "source": "station_20260627_39389_0.jpg",
-  "face_frac": 0.46,
-  "head_cover": 0.9989
+  "tf": 0.28,
+  "fcx": 0.5,
+  "fcy": 0.5
+ },
+ "user": {
+  "tf": 0.46,
+  "fcx": 0.5,
+  "fcy": 0.45,
+  "source": "studio_20260903_94616_0.jpg"
  },
  "folder": {
   "shape": "folder",
   "source": "studio_20260803_72973_2.jpg"
- },
- "user": {
-  "shape": "squircle",
-  "source": "studio_20260903_94616_0.jpg"
  }
 }
