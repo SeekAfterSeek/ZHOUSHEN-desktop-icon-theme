@@ -1,0 +1,57 @@
+[
+ {
+  "app": "个人 - Edge",
+  "file": "fc_0979.jpg",
+  "corr": 0.8827,
+  "shape": "squircle"
+ },
+ {
+  "app": "联想电脑管家",
+  "file": "fc_0995.jpg",
+  "corr": 0.9796,
+  "shape": "shield"
+ },
+ {
+  "app": "Visual Studio Code",
+  "file": "fc_1277.jpg",
+  "corr": 0.9942,
+  "shape": "squircle"
+ },
+ {
+  "app": "哔哩哔哩",
+  "file": "station_20260524_50364_0.jpg",
+  "corr": 0.8812,
+  "shape": "squircle"
+ },
+ {
+  "app": "哔哩哔哩 2",
+  "file": "station_0001.jpg",
+  "corr": 0.891,
+  "shape": "squircle",
+  "note": "第二个 B站 快捷方式，用 P4"
+ },
+ {
+  "app": "DeepSeek Harness",
+  "file": "station_20260912_43162_3.jpg",
+  "corr": 0.9894,
+  "shape": "squircle"
+ },
+ {
+  "app": "互传",
+  "file": "station_20260925_18697_3.jpg",
+  "corr": 0.8833,
+  "shape": "squircle"
+ },
+ {
+  "app": "ToDesk",
+  "file": "station_20260927_91932_0.jpg",
+  "corr": 0.9674,
+  "shape": "squircle"
+ },
+ {
+  "app": "QQ音乐",
+  "file": "picks__station_20260510_59173_0.jpg",
+  "corr": 0.877,
+  "shape": "circle"
+ }
+]
