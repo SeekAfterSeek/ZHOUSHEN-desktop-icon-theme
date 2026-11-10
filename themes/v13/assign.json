@@ -455,8 +455,9 @@
   "ph": null,
   "from": "p20_p9_circle",
   "match_corr": 0.819,
-  "shape": "circle+ear-tips+white-ring",
-  "ring": "white 2.4%"
+  "shape": "circle+ear-tips+white-glow",
+  "ring": "white 2.4%",
+  "edge": "white glow alpha120 blur0.032 + hairline alpha70"
  },
  "腾讯会议": {
   "path": "D:\\DSH\\workspace\\SMALL RESULT\\zhoushen-icon-theme\\photos\\c929b_90b313ea59.png",
