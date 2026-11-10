@@ -47,16 +47,16 @@
   "file": "station_20260927_91932_0.jpg",
   "corr": 0.996,
   "shape": "squircle",
-  "note": "N7 宽构图（露白色褶边领），新建快捷方式｜人脸放大到约42-46%（保留截图取景）",
-  "from": "shot_locate"
+  "note": "严格按 overview_p4 P19 构图（station_20260927_91932_0，脸高46%）",
+  "from": "p19_recipe"
  },
  {
   "app": "QQ音乐",
   "file": "station_20260802_35819_1.jpg",
   "corr": 1.0,
   "shape": "circle",
-  "note": "N2 黄衬衫街景，圆形+金边｜人脸放大到约42-46%（保留截图取景）",
-  "from": "shot_locate"
+  "note": "N2 黄衬衫街景，宽构图（撤销人脸放大）",
+  "from": "n2_wide"
  },
  {
   "app": "腾讯QQ",
