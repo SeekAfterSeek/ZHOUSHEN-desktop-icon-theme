@@ -1,0 +1,38 @@
+{
+ "pc": {
+  "name_cn": "此电脑",
+  "source": "studio_20261026_32066_6.jpg",
+  "cos": 0.858,
+  "face_frac": 0.407,
+  "face_ok": true,
+  "face_cut": false,
+  "badge_overlap": 0.0
+ },
+ "bin": {
+  "name_cn": "回收站",
+  "source": "station_20261106_78013_1.jpg",
+  "cos": 0.932,
+  "face_frac": 0.405,
+  "face_ok": true,
+  "face_cut": false,
+  "badge_overlap": 0.0
+ },
+ "panel": {
+  "name_cn": "控制面板",
+  "source": "station_20260627_39389_0.jpg",
+  "cos": 0.84,
+  "face_frac": 0.41,
+  "face_ok": true,
+  "face_cut": false,
+  "badge_overlap": 0.0
+ },
+ "folder": {
+  "name_cn": "文件夹",
+  "source": "studio_20261002_20277_0.jpg",
+  "cos": 0.246,
+  "face_frac": 0.437,
+  "face_ok": true,
+  "face_cut": false,
+  "badge_overlap": 0.0
+ }
+}
