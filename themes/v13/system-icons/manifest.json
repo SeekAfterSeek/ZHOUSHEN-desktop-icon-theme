@@ -1,48 +1,44 @@
 {
- "说明": "人脸位置改为补边自由裁切，实测误差≤3%",
+ "pc": {
+  "shape": "monitor",
+  "source": "studio_20261026_32066_6.jpg",
+  "note": "用户确认不动"
+ },
  "bin": {
   "shape": "trashcan",
   "source": "station_20261106_78013_1.jpg",
-  "face": [
-   50,
-   59
+  "head_center_src": [
+   0.16,
+   0.235
   ],
-  "measured": [
-   49.5,
-   57.5
+  "head_h": 0.22,
+  "target": [
+   0.5,
+   0.47
   ],
-  "face_frac": 0.36
+  "head_ratio": 0.46,
+  "note": "不用人脸检测，按网格读数直接裁切；人物略偏右"
  },
  "panel": {
   "shape": "gear",
   "source": "station_20260627_39389_0.jpg",
-  "face": [
-   50,
-   50
+  "head_center_src": [
+   0.415,
+   0.185
   ],
-  "measured": [
-   51.0,
-   46.9
+  "head_h": 0.25,
+  "target": [
+   0.5,
+   0.4
   ],
-  "face_frac": 0.36
+  "head_ratio": 0.52,
+  "note": "头部上移并放大"
  },
  "user": {
-  "shape": "bust",
+  "shape": "person_outline",
   "source": "station_20260524_50364_3.jpg",
-  "face": [
-   50,
-   32
-  ],
-  "measured": [
-   51.3,
-   31.3
-  ],
-  "face_frac": 0.38
- },
- "pc": {
-  "shape": "monitor",
-  "source": "studio_20261026_32066_6.jpg",
-  "note": "用户认可"
+  "method": "GrabCut 抠像 + 轮廓描边",
+  "note": "不再用胸像轮廓，直接取人物本体"
  },
  "folder": {
   "shape": "folder",
