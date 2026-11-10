@@ -58,7 +58,7 @@
   "app": "腾讯QQ",
   "file": "photos_2026__station_20261017_31971_5.jpg",
   "corr": 0.819,
-  "shape": "circle+ear-tips",
-  "note": "P9 狐狸耳：圆放大到宽 0.93（纯圆 0.97），耳尖从圆顶探出，脸高 40%"
+  "shape": "circle+ear-tips+white-ring",
+  "note": "P9 狐狸耳：圆宽0.93 + 耳尖探出 + 白色内描边（2.4%），脸高40%"
  }
 ]

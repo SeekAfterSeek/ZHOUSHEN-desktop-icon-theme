@@ -334,7 +334,8 @@
   "face_px": 122.4,
   "sharp": 10.7,
   "ph": 17361656934624622720,
-  "from": "rabbit"
+  "from": "rabbit",
+  "face_tf": 0.44
  },
  "PyCharm 2026.2.3": {
   "file": "studio_20261026_32066_5.jpg",
@@ -454,7 +455,8 @@
   "ph": null,
   "from": "p20_p9_circle",
   "match_corr": 0.819,
-  "shape": "circle"
+  "shape": "circle+ear-tips+white-ring",
+  "ring": "white 2.4%"
  },
  "腾讯会议": {
   "path": "D:\\DSH\\workspace\\SMALL RESULT\\zhoushen-icon-theme\\photos\\c929b_90b313ea59.png",
