@@ -59,7 +59,7 @@
   "file": "photos_2026__station_20261017_31971_5.jpg",
   "corr": 0.819,
   "shape": "circle+ear-tips+soft-glow",
-  "note": "P9 狐狸耳：圆径0.965、底弧完整；耳朵软alpha保留原渐变；两耳间暗场透明化(带耳朵保护区，不伤耳尖)；白色柔光",
+  "note": "P9 狐狸耳：圆径0.965、底弧完整；耳朵先填实再轻羽化（耳尖颜色完整）；两耳间暗场透明化并设保护区；白色柔光",
   "circle_width": 0.969,
   "face_tf": 0.4,
   "ear_mask": "soft-alpha"
