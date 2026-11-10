@@ -1,22 +1,29 @@
 {
- "此电脑": {
+ "note": "v3：头部完整度用原始人脸坐标判定（上0.86/侧0.74/下0.58），面部完整、头发允许少量裁剪",
+ "pc": {
   "shape": "monitor",
-  "src": "studio_20261026_32066_6.jpg"
+  "source": "studio_20261026_32066_6.jpg",
+  "face_frac": 0.42,
+  "head_cover": 0.995
  },
- "回收站": {
+ "bin": {
   "shape": "trashcan",
-  "src": "station_20261106_78013_1.jpg"
+  "source": "station_20261106_78013_1.jpg",
+  "face_frac": 0.46,
+  "head_cover": 0.998
  },
- "控制面板": {
+ "panel": {
   "shape": "gear",
-  "src": "station_20260627_39389_0.jpg"
+  "source": "station_20260627_39389_0.jpg",
+  "face_frac": 0.46,
+  "head_cover": 0.9989
  },
- "文件夹": {
+ "folder": {
   "shape": "folder",
-  "src": "studio_20260803_72973_2.jpg"
+  "source": "studio_20260803_72973_2.jpg"
  },
- "Lenovo": {
+ "user": {
   "shape": "squircle",
-  "src": "studio_20260903_94616_0.jpg"
+  "source": "studio_20260903_94616_0.jpg"
  }
 }
