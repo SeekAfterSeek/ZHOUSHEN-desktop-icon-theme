@@ -438,9 +438,9 @@
   "shape": "shield"
  },
  "腾讯QQ": {
-  "file": "f2_0069.jpg",
-  "path": "D:\\DSH\\workspace\\SMALL RESULT\\zhoushen-icon-theme\\fc2_src\\f2_0069.jpg",
-  "dir": "fc2_src",
+  "file": "photos_2026__station_20261017_31971_5.jpg",
+  "path": "D:\\DSH\\workspace\\SMALL RESULT\\周深原始照片库\\photos_2026__station_20261017_31971_5.jpg",
+  "dir": "photos_2026",
   "cloth": "orange",
   "conf": 0,
   "fx": 0.5,
@@ -452,7 +452,9 @@
   "face_px": 0,
   "sharp": 0,
   "ph": null,
-  "from": "leopard"
+  "from": "p20_p9_circle",
+  "match_corr": 0.819,
+  "shape": "circle"
  },
  "腾讯会议": {
   "path": "D:\\DSH\\workspace\\SMALL RESULT\\zhoushen-icon-theme\\photos\\c929b_90b313ea59.png",

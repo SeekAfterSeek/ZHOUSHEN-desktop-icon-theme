@@ -53,5 +53,12 @@
   "file": "picks__station_20260510_59173_0.jpg",
   "corr": 0.877,
   "shape": "circle"
+ },
+ {
+  "app": "腾讯QQ",
+  "file": "photos_2026__station_20261017_31971_5.jpg",
+  "corr": 0.819,
+  "shape": "circle",
+  "note": "P9 狐狸耳，圆形"
  }
 ]
