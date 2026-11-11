@@ -1,19 +1,24 @@
 ﻿# 周深桌面图标主题 · ZS Desktop Icon Theme
 
-**当前版本：v12**
+**当前版本：v13**
 
-> 24 个常用 Windows 应用，一键换成周深舞台照图标。
+> 24 个常用 Windows 应用 + 5 个系统项，一键换成周深舞台照图标。
 > 只改图标，不动壁纸 —— 不满意，一条命令回退到安装前。
 
 <p align="center">
-  <img src="assets/hero_v11.png" width="900" alt="第十一版效果">
+  <img src="assets/showcase-portrait.jpg" width="430" alt="竖版总览 · 按主色分组"><br>
+  <sub>29 个图标（24 应用 + 5 系统项）· 按主色分组 · 只换图标，不动壁纸</sub>
+</p>
+
+<p align="center">
+  <img src="assets/showcase-desktop.jpg" width="880" alt="桌面图标总览">
 </p>
 
 <p align="center">
   <a href="https://github.com/SeekAfterSeek/zs-desktop-icon-theme/stargazers">
     <img src="https://img.shields.io/github/stars/SeekAfterSeek/zs-desktop-icon-theme?style=flat-square" alt="stars"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6?style=flat-square" alt="platform">
-  <img src="https://img.shields.io/badge/version-v12.0-3EB575?style=flat-square" alt="version">
+  <img src="https://img.shields.io/badge/version-v13.0-3EB575?style=flat-square" alt="version">
   <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="license">
 </p>
 
@@ -96,7 +101,8 @@ powershell -ExecutionPolicy Bypass -File installer\Install-Theme.ps1 -Theme plan
 
 | 方案 | 形状 | 照片 | 说明 |
 |---|---|---|---|
-| **v12**（当前默认） | 圆角方形为主 | 混搭 B/C + 手工精选 | 联想/腾讯会议等重选表情更生动的照片 |
+| **v13**（当前默认） | 圆角方形为主 | 最终定稿 | 含 5 个系统项（用户文件夹/此电脑/回收站/控制面板/文件夹）；Lenovo 改雨衣大头照 + 阴影立体 |
+| **v12** | 圆角方形为主 | 混搭 B/C + 手工精选 | 联想/腾讯会议等重选表情更生动的照片 |
 | **v11** | 圆角方形 / 圆形 | 精选 | 三标准加权评分后的版本 |
 | **Plan B** | 以圆角方形为主 | **全部首次使用** | 与 v11 零重叠的替代方案 |
 | **Plan C** | 以圆形为主 | **全部首次使用** | 与 v11、Plan B 都零重叠 |
@@ -121,7 +127,8 @@ themes/versions/
 ├── v9/   图标色 × 衣服色双约束
 ├── v10/  衣服色为准 + 小脸裁剪放大
 ├── v11/  三标准加权 + 调色 + 唯一性  ← 方法定型
-└── v12/  混搭 Plan B/C + 全部方形    ← 当前版本
+├── v12/  混搭 Plan B/C + 全部方形
+└── v13/  系统项 + 定稿（当前版本，29 个图标）
 ```
 
 每一版都有独立的提交记录和说明文档 `docs/versions/vN.md`，
