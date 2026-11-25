@@ -1,0 +1,209 @@
+{
+ "count": 29,
+ "note": "本机桌面当前实际使用的图标存档",
+ "items": [
+  {
+   "name": "Lenovo",
+   "slug": "user-folder",
+   "kind": "system",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\zs_user_v19.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "此电脑",
+   "slug": "this-pc",
+   "kind": "system",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\zs_pc_v9.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "回收站",
+   "slug": "recycle-bin",
+   "kind": "system",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\zs_bin_v14.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "控制面板",
+   "slug": "control-panel",
+   "kind": "system",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\zs_panel_v14.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "总文件夹 / 工作成果",
+   "slug": "folder",
+   "kind": "system",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\sys_folder.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "360安全浏览器",
+   "slug": "360browser",
+   "kind": "app",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\se360.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "Cherry Studio",
+   "slug": "cherry-studio",
+   "kind": "app",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\cherry.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "Cursor",
+   "slug": "cursor",
+   "kind": "app",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\cursor.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "DeepSeek Harness",
+   "slug": "deepseek-harness",
+   "kind": "app",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\deepseek.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "Visual Studio Code",
+   "slug": "vscode",
+   "kind": "app",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\vscode.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "WorkBuddy",
+   "slug": "workbuddy",
+   "kind": "app",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\workbuddy.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "WPS Office",
+   "slug": "wps-office",
+   "kind": "app",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\wps.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "个人 - Edge",
+   "slug": "edge",
+   "kind": "app",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\edge.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "全能录屏助手",
+   "slug": "screen-recorder",
+   "kind": "app",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\luping.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "剪映专业版",
+   "slug": "jianying",
+   "kind": "app",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\jianying.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "百度网盘",
+   "slug": "baidu-netdisk",
+   "kind": "app",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\baidunet.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "飞书",
+   "slug": "feishu",
+   "kind": "app",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\feishu.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "Clash Verge",
+   "slug": "clash-verge",
+   "kind": "app",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\clash.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "Google Chrome",
+   "slug": "chrome",
+   "kind": "app",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\chrome.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "PyCharm 2026.2.3",
+   "slug": "pycharm",
+   "kind": "app",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\pycharm.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "QQ音乐",
+   "slug": "qqmusic",
+   "kind": "app",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\qqmusic.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "ToDesk",
+   "slug": "todesk",
+   "kind": "app",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\todesk.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "互传",
+   "slug": "huchuan",
+   "kind": "app",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\huchuan.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "哔哩哔哩",
+   "slug": "bilibili",
+   "kind": "app",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\bilibili.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "微信",
+   "slug": "weixin",
+   "kind": "app",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\weixin.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "网易邮箱大师",
+   "slug": "mailmaster",
+   "kind": "app",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\mailmaster.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "联想电脑管家",
+   "slug": "lenovo-pc-manager",
+   "kind": "app",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\lenovopc.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "腾讯QQ",
+   "slug": "qq",
+   "kind": "app",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\qq.ico",
+   "size": "256x256"
+  },
+  {
+   "name": "腾讯会议",
+   "slug": "wemeet",
+   "kind": "app",
+   "source": "C:\\Users\\Lenovo\\zsIcons\\wemeet.ico",
+   "size": "256x256"
+  }
+ ]
+}
