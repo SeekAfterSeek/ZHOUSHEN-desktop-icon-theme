@@ -94,6 +94,9 @@ Explorer 的解析会出现歧义或编码问题，导致找不到资源。
 本仓库的 `installer/Install-Theme.ps1` 在应用前会自动把 ICO 复制到
 `$env:LOCALAPPDATA\ZsIconTheme\icons`，就是为了绕开这个问题。
 
+**注意**：Windows 用户名如果是中文，`%LOCALAPPDATA%` 本身就含中文——这时用
+`Enable-SystemIcons.ps1 -DestDir C:\ZsIcons` 把图标工作目录指到纯 ASCII 路径。
+
 **可复用判据**
 > 凡是要交给 Explorer 渲染的资源路径，只用 `[a-zA-Z0-9_\-\.]`，不要空格、不要中文。
 
@@ -531,6 +534,94 @@ noteCard.cover.infoList[0].url
 
 ---
 
+## 15. 文件夹图标两套机制：桌面换了、新建的还是旧的
+
+**现象**
+
+给几个文件夹写了 `desktop.ini`（`IconResource`），或改了 HKCU 的 `Shell Icons`，
+桌面上已有的文件夹图标变了——但「右键 → 新建文件夹」出来的还是旧的黄色图标。
+
+**根因**
+
+文件夹图标有**两套独立机制**：
+
+| 机制 | 作用范围 | 定义位置 |
+|---|---|---|
+| A. `desktop.ini` 的 `IconResource`（需配合 ReadOnly 属性） | 仅这一个文件夹 | 文件夹内部 |
+| B. 系统默认定义 `Shell Icons` 3（关闭态）/ 4（打开态） | 全系统所有文件夹 | 注册表 |
+
+新建文件夹**不会自动生成 desktop.ini**，走机制 B；只写 HKCU 在部分场景不生效，
+必须 **HKCU + HKLM 都写 3/4**。已有文件夹显示新图标，很可能只是各自贴了 desktop.ini，
+不代表系统定义已改。
+
+**解法**
+
+HKCU 直接写（免管理员）；HKLM 需要管理员——生成 .reg 交用户双击导入，
+不要自我提权。完整实测流程见 `docs/SYSTEM-ICONS.md` 方案 A。
+
+**可复用判据**
+> desktop.ini 只影响单个文件夹；「以后新建的都要生效」必须改系统默认定义
+> （`Shell Icons` 3/4，HKCU + HKLM）。
+
+---
+
+## 16. .reg 文件用 UTF-8 保存 → 导入乱码/失败
+
+**现象**
+
+用 PowerShell 生成的 .reg，双击导入后值是乱码或导入报错；
+同样的内容手动在 regedit 里敲就正常。
+
+**根因**
+
+regedit 5.00 格式按 **UTF-16 LE（带 BOM）**解析。UTF-8 文件里的中文/多字节内容
+被错读。合法 .reg 的文件头两字节必须是 `255,254`（UTF-16 LE BOM）。
+
+**解法**
+
+```powershell
+$lines | Out-File -LiteralPath $out -Encoding Unicode   # PowerShell 5.1 的 Unicode = UTF-16 LE，自带 BOM
+```
+
+生成后校验前两字节是否为 `255,254`。即使内容全是 ASCII 也不要赌 UTF-8 能过。
+
+**可复用判据**
+> 程序生成的 .reg 一律 UTF-16 LE；生成后校验文件头 `255,254`。
+
+---
+
+## 17. 图标缓存有两级：SHChangeNotify 刷不掉 Explorer 的进程内存缓存
+
+**现象**
+
+注册表用 `Get-ItemProperty` 读回来确认已是新路径，但桌面/新建文件夹仍显示旧图标；
+`ie4uinit.exe -show` 和 `SHChangeNotify(0x08000000)` 都执行了，没用。
+
+**根因**
+
+图标缓存分**两级**：
+
+| 级别 | 覆盖手段 |
+|---|---|
+| 外壳数据库 | `ie4uinit.exe -show`、`SHChangeNotify` |
+| **Explorer 进程内存** | 只有重启 explorer 进程能刷 |
+
+`Shell Icons` 全局映射属于第二级——Explorer 把渲染过的图标缓存在进程内存里，
+上面两个通知只能刷第一级。改 `.lnk` 的 `IconLocation`（Install-Theme.ps1 的场景）
+多数只需第一级就能变，而全局映射更顽固。
+
+**解法**
+
+重启 explorer：`taskkill /f /im explorer.exe` 后运行 `explorer.exe`；或任务管理器 →
+右键「Windows 资源管理器」→ 重新启动。桌面/任务栏闪两秒，独立运行的应用不受影响。
+**不需要删除 `iconcache_*.db` 文件**（旧脚本曾用 `Remove-Item` 批量删 .db，
+没必要且有误删风险，已废弃）。
+
+**可复用判据**
+> 注册表确认正确 + 显示不对 → 先 `ie4uinit -show`，再重启 explorer，两级递进。
+
+---
+
 ## 汇总：一页速查
 
 | 症状 | 首查 |
@@ -545,3 +636,6 @@ noteCard.cover.infoList[0].url
 | 选中了空舞台/海报 | 缺构图硬门槛 |
 | 头发被染色 | 保护椭圆没加 |
 | 滚动抓不到数据 | 读 `__INITIAL_STATE__` |
+| 文件夹换了、新建的还是旧的 | 两套机制：`Shell Icons` 3/4 是否 HKCU + HKLM 都写了 |
+| .reg 导入乱码 | 是否 UTF-16 LE（文件头 255,254） |
+| 注册表对、显示旧图 | 缓存两级：`ie4uinit` → 重启 explorer |

@@ -1,6 +1,6 @@
 ﻿# 周深桌面图标主题 · ZS Desktop Icon Theme
 
-**当前版本：v13**
+**当前版本：v13.1**
 
 > 24 个常用 Windows 应用 + 5 个系统项，一键换成周深舞台照图标。
 > 只改图标，不动壁纸 —— 不满意，一条命令回退到安装前。
@@ -18,7 +18,7 @@
   <a href="https://github.com/SeekAfterSeek/zs-desktop-icon-theme/stargazers">
     <img src="https://img.shields.io/github/stars/SeekAfterSeek/zs-desktop-icon-theme?style=flat-square" alt="stars"></a>
   <img src="https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078D6?style=flat-square" alt="platform">
-  <img src="https://img.shields.io/badge/version-v13.0-3EB575?style=flat-square" alt="version">
+  <img src="https://img.shields.io/badge/version-v13.1-3EB575?style=flat-square" alt="version">
   <img src="https://img.shields.io/badge/license-MIT-blue?style=flat-square" alt="license">
 </p>
 
@@ -82,6 +82,11 @@ Windows 会缓存 `.lnk` 的图标。脚本已经做了 `SHChangeNotify` 通知�
 2. 运行仓库里的 `src\versions\v13\force_refresh_icons.py`（会清 iconcache 并重启 explorer）
 3. 注销再登录
 
+> 换的是**系统项**（文件夹 / 此电脑 / 回收站等）？它们的图标缓存分两级：
+> `SHChangeNotify` / `ie4uinit -show` 只能刷第一级；注册表确认已改对但桌面、
+> 新建文件夹仍显示旧图标时，需要**重启 explorer**。详见
+> [docs/SYSTEM-ICONS.md](docs/SYSTEM-ICONS.md) 第 6 节。
+
 ## 使用
 
 ### 四个动作
@@ -127,16 +132,38 @@ powershell -ExecutionPolicy Bypass -File installer\Install-Theme.ps1 -Action rol
 
 ### 关于系统项
 
-主题里另外还有 5 个系统项图标（用户文件夹、此电脑、回收站、控制面板、文件夹），
-它们不是 `.lnk`，改的是注册表 `CLSID\...\DefaultIcon` 或文件夹的 `desktop.ini`，
-**安装脚本目前不处理这 5 项**，需要手动：
+主题里另外还有 5 个系统项图标（用户文件夹、此电脑、回收站、控制面板、文件夹）。
+**v13.1 起提供专用安装器**，把这一步工程化了：
+
+```powershell
+# 只读预览当前注册表状态
+powershell -ExecutionPolicy Bypass -File installer\Enable-SystemIcons.ps1 -Action list
+
+# 应用：自动备份 -> 写用户级注册表 -> 生成系统级 .reg
+powershell -ExecutionPolicy Bypass -File installer\Enable-SystemIcons.ps1 -Action apply
+
+# 一键回退
+powershell -ExecutionPolicy Bypass -File installer\Enable-SystemIcons.ps1 -Action rollback
+```
+
+脚本**全程零删除、不需要管理员权限、不硬编码用户路径**：它只写当前用户（HKCU）
+注册表；系统级（HKLM）的 `Shell Icons` 3/4 值会生成一个 `.reg` 文件（UTF-16 LE），
+**双击导入**后"任何位置新建文件夹"才会用主题图标——只改 desktop.ini 或 HKCU
+是不够的，这是文件夹图标最常见的不生效原因。
+
+完整原理、手动步骤、缓存刷新、故障排查与安全红线见
+[docs/SYSTEM-ICONS.md](docs/SYSTEM-ICONS.md)。
+
+<details>
+<summary>不想用脚本？手动方法（点开）</summary>
 
 | 项 | 改法 |
 |---|---|
 | 此电脑 / 回收站 / 控制面板 / 用户文件夹 | `HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\CLSID\{CLSID}\DefaultIcon` 的默认值 |
-| 普通文件夹 | 文件夹里放 `desktop.ini`，写 `IconResource=<ico 路径>,0` |
+| 普通文件夹 | 单个文件夹：`desktop.ini` 写 `IconResource=<ico 路径>,0`（配合 ReadOnly 属性）；**全系统默认**：`Shell Icons` 的 3、4 值（HKCU + HKLM 都写），见 SYSTEM-ICONS.md 第 4 节 |
 
-改动前记得先导出对应注册表键备份。这部分我会在后续版本做成 `-IncludeSystemItems` 开关。
+改动前记得先导出对应注册表键备份。
+</details>
 
 ### 关于管理员权限
 
@@ -284,6 +311,9 @@ themes/versions/
 | 5 | 人脸检测 | 把手肘当脸，裁剪全错 | 改用 YuNet 深度模型 |
 | 6 | 图案重复 | 两个 APP 用了同一张照片的相邻帧 | pHash 汉明距离约束 |
 | 7 | 素材混入他人 | 图标里出现陌生面孔 | 人工审核 + 构图筛 |
+| 8 | 文件夹图标两套机制 | 桌面文件夹换了、新建的还是旧的 | 系统默认定义在 `Shell Icons` 3/4（HKCU + HKLM），desktop.ini 只影响单个文件夹 |
+| 9 | 图标缓存两级 | 注册表改对了却不显示 | `ie4uinit` 不够时重启 explorer |
+| 10 | .reg 文件编码 | 导入乱码/失败 | 必须 UTF-16 LE（`Out-File -Encoding Unicode`） |
 
 ---
 
@@ -317,7 +347,8 @@ themes/versions/
 ```
 zs-icon-theme/
 ├── installer/
-│   └── Install-Theme.ps1        # 安装 / 回退 / 预览
+│   ├── Install-Theme.ps1        # 安装 / 回退 / 预览（24 个应用的 .lnk）
+│   └── Enable-SystemIcons.ps1   # 系统项图标（文件夹/此电脑/回收站/控制面板/用户文件夹）
 ├── themes/
 │   ├── v11/icons/               # 24 个 png + 24 个 ico
 │   ├── planB/icons/
@@ -331,6 +362,7 @@ zs-icon-theme/
 ├── docs/
 │   ├── ITERATIONS.md            # 11 个版本的完整迭代记录
 │   ├── PITFALLS.md              # 所有踩坑与环境适配
+│   ├── SYSTEM-ICONS.md          # 系统项图标指南（原理/手动步骤/回退/红线/AI 守则）
 │   └── DESIGN.md                # 设计标准与算法细节
 ├── tools/
 │   ├── png2ico.py               # PNG → ICO（多尺寸 BMP 帧）
