@@ -622,6 +622,38 @@ $lines | Out-File -LiteralPath $out -Encoding Unicode   # PowerShell 5.1 的 Uni
 
 ---
 
+## 18. 图标守护类计划任务：定时刷新缓存让全局图标「过一会儿就回退」
+
+**症状**：注册表 `Shell Icons` 3/4 确认正确，桌面新建的文件夹刚建出来是主题图标，
+但**每隔约 30 分钟回退旧图标**；桌面按 F5 又变回来。已有 `desktop.ini` 的文件夹不受影响
+（机制 A 自带定义，不依赖全局映射）。
+
+**根因**：机器上装着图标守护类计划任务（本机实况：早期版本创建的 `ZsIconGuardian`，
+每 30 分钟以管理员权限扫描全部 .lnk、把应用快捷方式图标改回主题版）。它的收尾动作是
+`ie4uinit.exe -show` + `SHChangeNotify` —— 每次都会触发图标缓存重写；而 Explorer 重绘
+桌面时对 `Shell Icons` 全局映射的采纳不稳定（第 17 条的进程内存缓存问题），**每次缓存
+搅动都是一次回退机会**。
+
+**证据链**（实机抓取，2026-11-26）：
+- `iconcache_*.db` 的 LastWriteTime（15:29、17:59、18:59、19:29）与任务触发点
+  （每小时 ：29:29 / :59:59）逐次吻合；
+- 任务 LastRun=19:29:29，`iconcache_256.db` 重写时间=19:29:37，**相差仅 8 秒**。
+
+**解法**
+
+1. 找出元凶：`Get-ScheduledTask | Where-Object {$_.TaskName -match 'icon|Zs'}`
+   对照 `Get-ScheduledTaskInfo` 的 LastRunTime 与 iconcache 重写时间。
+2. 禁用（可逆，不删除）：`schtasks /change /tn "任务名" /disable`（需管理员；
+   普通权限报「拒绝访问」——任务以 RunLevel=Highest 创建时，非管理员无法改动）。
+3. 代价与替代：禁用后应用自动更新会把自身快捷方式图标改回官方版，届时手动跑一次
+   `fix_public_icons.ps1` 即可；或给关键文件夹写 `desktop.ini`（机制 A）绕开全局映射。
+
+**教训**：任何「定时刷新图标缓存」的后台任务都会与 `Shell Icons` 全局映射打架。
+出现「改完过一会儿回退」时，**先查计划任务和 iconcache 重写时间戳，再怀疑注册表**——
+注册表定义本身通常是对的。给用户部署主题时应主动检查机器上是否残留旧的守护任务。
+
+---
+
 ## 汇总：一页速查
 
 | 症状 | 首查 |
@@ -639,3 +671,5 @@ $lines | Out-File -LiteralPath $out -Encoding Unicode   # PowerShell 5.1 的 Uni
 | 文件夹换了、新建的还是旧的 | 两套机制：`Shell Icons` 3/4 是否 HKCU + HKLM 都写了 |
 | .reg 导入乱码 | 是否 UTF-16 LE（文件头 255,254） |
 | 注册表对、显示旧图 | 缓存两级：`ie4uinit` → 重启 explorer |
+| 刚建是新图标、过一会儿回退 | 图标守护类计划任务定时刷缓存（第 18 条）：对照任务 LastRunTime 与 iconcache 重写时间戳 |
+| 禁用计划任务报「拒绝访问」 | 任务以 RunLevel=Highest 创建，需管理员执行 `schtasks /change ... /disable` |

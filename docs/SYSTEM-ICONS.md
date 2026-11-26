@@ -156,6 +156,8 @@ Windows Registry Editor Version 5.00
 | 已有文件夹变了、新建的还是旧的 | 只改了机制 A 或只写了 HKCU | 补 HKLM `Shell Icons` 3/4 |
 | 双击 .reg 没反应 / 导入后乱码 | 编码不是 UTF-16 LE | `Out-File -Encoding Unicode` 重新生成 |
 | 图标路径含中文（用户名是中文） | LOCALAPPDATA 跟用户名走 | `-DestDir` 指定纯 ASCII 目录 |
+| 刚建是新图标、过一会儿回退旧图 | 机器上有图标守护类计划任务定时 `ie4uinit` 刷缓存（PITFALLS 第 18 条） | 对照任务 LastRunTime 与 iconcache 重写时间戳确认元凶后禁用该任务（需管理员）；或给文件夹写 `desktop.ini`（机制 A） |
+| 禁用计划任务报「拒绝访问」 | 任务以 RunLevel=Highest 创建 | 用管理员 CMD 执行 `schtasks /change /tn "任务名" /disable` |
 | 想撤销全部改动 | — | 脚本 `-Action rollback`，按其输出操作 |
 
 ---
