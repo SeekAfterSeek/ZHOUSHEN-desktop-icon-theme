@@ -52,6 +52,11 @@
 - 只写 HKCU 的 `Shell Icons` 在部分场景不生效，**必须配 HKLM**。
 - 所以「让以后任何地方新建文件夹都用主题图标」的正解是**机制 B（HKCU + HKLM 都写）**，
   不需要常驻 watcher 逐个补写。
+- **但机制 B 有结构性天花板**（2026-11-27 ProcMon 实锤）：Explorer 取图是多入口并发，
+  叠加层只能拦 shell32 编号引用；大规模重绘时 imageres.dll 直读可达数百次/秒且
+  无注册表可改（FolderTypes 模板无 DefaultIcon），此时无 desktop.ini 的文件夹回退。
+  **desktop.ini 是唯一每次取图必经的定义**，全局定义负责广覆盖、desktop.ini 负责保真，
+  详见 [PITFALLS.md](PITFALLS.md) 第 18 条。
 
 **判据**：只影响单个文件夹 → 用机制 A；要让「以后新建的」生效 → 必须改机制 B。
 

@@ -639,6 +639,32 @@ $lines | Out-File -LiteralPath $out -Encoding Unicode   # PowerShell 5.1 的 Uni
   （每小时 ：29:29 / :59:59）逐次吻合；
 - 任务 LastRun=19:29:29，`iconcache_256.db` 重写时间=19:29:37，**相差仅 8 秒**。
 
+**进阶实锤（2026-11-27，ProcMon 抓取 Explorer 全量事件）**
+
+禁用守护任务后回退仍发生，ProcMon 过滤 `explorer.exe` 抓到调用链实况：
+
+| 证据 | 数值 | 含义 |
+|---|---|---|
+| `imageres.dll` 被读 | **1069 次**（重绘爆发时 709 次/秒） | Explorer 的主力图标源**不经过**叠加层 |
+| `shell32.dll` 被读 | 仅 179 次 | 叠加层唯一能覆盖的来源，占少数 |
+| `Shell Icons\3` 查询 | 243 次，全部 SUCCESS | 叠加层被查询且能读到我们的值 |
+| `Shell Icons\4` 查询 | **0 次** | 打开态文件夹图标从不走叠加层 |
+| 新建文件夹瞬间 | 先查 `Shell Icons\3` → 再读自定义 .ico | 出生时是新图标的原因 |
+| 大规模重绘时 | 叠加层查询与 imageres 直读**并发**（26 vs 709） | 多入口取图并存，逐条目走不同路径 |
+| `FolderTypes\{GUID}` 模板 | **无 DefaultIcon 子键** | imageres 引用写死在 shell 代码里，注册表改不了 |
+
+**结论**：Explorer 取图存在**多入口并发**——新建/部分刷新走叠加层（图标正确），
+重绘爆发走 imageres.dll 直读（叠加层不在场，图标回退）。叠加层只拦
+「指向 shell32.dll 的编号引用」，这是结构性天花板，任何注册表参数都突破不了。
+中途拦截的可行位置从上到下依次为：desktop.ini（官方、必经）> Shell Icons 叠加层
+（部分路径）> 无（imageres 路径无合法钩子；改 DLL 本体受 WRP/TrustedInstaller/
+WinSxS 三层保护且殃及全系统引用者）。
+
+**ProcMon 复现方法**：Sysinternals Procmon64（微软签名）→ 过滤
+`Process Name is explorer.exe` → 桌面新建文件夹并放入文件 → 导出 CSV →
+统计 `imageres.dll` / `shell32.dll` 的 CreateFile 分布与 `Shell Icons`
+RegQueryValue 时间线即可复现上表。
+
 **解法**
 
 1. 找出元凶：`Get-ScheduledTask | Where-Object {$_.TaskName -match 'icon|Zs'}`
